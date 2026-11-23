@@ -1,7 +1,11 @@
 import json
 import os
 from tqdm import tqdm
-from vllm import LLM, SamplingParams
+try:
+    from vllm import LLM, SamplingParams
+except ImportError:
+    LLM = None
+    SamplingParams = None
 import orjson
 
 INPUT_FILE = "clinical_targets.jsonl"               # or clinical_targets_high_value.jsonl

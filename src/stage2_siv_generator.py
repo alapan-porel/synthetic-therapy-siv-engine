@@ -3,7 +3,11 @@ import os
 import random
 import re
 from tqdm import tqdm
-from vllm import LLM, SamplingParams
+try:
+    from vllm import LLM, SamplingParams
+except ImportError:
+    LLM = None
+    SamplingParams = None
 
 # ================= CONFIG ==================
 INPUT_FILE = "stage1_drafts.jsonl"
